@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "SampleAutomotive"
 include(":automotive")
- 
+include(":template")
