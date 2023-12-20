@@ -1,11 +1,11 @@
 package com.memest.sampleautomotive
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -34,12 +34,21 @@ class MainActivity : ComponentActivity() {
             ) {
                 Text(text = "Click: $clickCount")
 
-                Button(onClick = {
-                    clickCount++
-                    Toast.makeText(this@MainActivity, "Count: $clickCount", Toast.LENGTH_LONG)
-                        .show()
-                }) {
-                    Text(text = "Click")
+                Row(
+                    modifier = Modifier,
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    Button(onClick = {
+                        clickCount++
+                    }) {
+                        Text(text = "Increase")
+                    }
+
+                    Button(onClick = {
+                        clickCount = 0
+                    }) {
+                        Text(text = "Reset")
+                    }
                 }
             }
         }
