@@ -3,6 +3,7 @@ package com.memest.template
 import androidx.car.app.CarContext
 import androidx.car.app.Screen
 import androidx.car.app.model.Action
+import androidx.car.app.model.ActionStrip
 import androidx.car.app.model.Pane
 import androidx.car.app.model.PaneTemplate
 import androidx.car.app.model.Row
@@ -27,6 +28,12 @@ class HelloScreen(carContext: CarContext) : Screen(carContext) {
             .build()
 
         return PaneTemplate.Builder(pane)
+            .setActionStrip(ActionStrip.Builder()
+                .addAction(Action.Builder()
+                    .setTitle("List Preview")
+                    .setOnClickListener { onListPreviewClick() }
+                    .build())
+                .build())
             .setHeaderAction(Action.APP_ICON)
             .build()
     }
@@ -39,5 +46,9 @@ class HelloScreen(carContext: CarContext) : Screen(carContext) {
     private fun onResetClick() {
         countClick = 0
         invalidate()
+    }
+
+    private fun onListPreviewClick() {
+        screenManager.push(ListScreen(carContext))
     }
 }
