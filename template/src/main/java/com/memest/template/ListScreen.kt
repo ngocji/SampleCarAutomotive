@@ -2,6 +2,7 @@ package com.memest.template
 
 import androidx.car.app.CarContext
 import androidx.car.app.Screen
+import androidx.car.app.model.Action
 import androidx.car.app.model.CarIcon
 import androidx.car.app.model.ItemList
 import androidx.car.app.model.ListTemplate
@@ -29,10 +30,11 @@ class ListScreen(carContext: CarContext) : Screen(carContext) {
 
     override fun onGetTemplate(): Template {
         return ListTemplate.Builder()
-
+            .setHeaderAction(Action.BACK)
             .setTitle("List Preview")
             .addSectionedList(SectionedItemList.create(itemList, "Header"))
 
             .build()
     }
+
 }
